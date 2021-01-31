@@ -13,6 +13,7 @@ body {
   margin: 0;
 }
 
+/* SETTING UP THE BOARD */
 .board {
   width: 100vw;
   height: 100vh;
@@ -28,6 +29,10 @@ body {
   width: var(--cell-size);
   height: var(--cell-size);
   border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 }
 
 .cell:first-child,
@@ -52,4 +57,22 @@ body {
 
 .cell:nth-child(3n + 3) {
   border-right: none;
+}
+
+/* MAKING THE MARKS */
+
+.cell.x::before,
+.cell.x::after {
+  content: '';
+  position: absolute;
+  width: calc(var(--mark-size) * 0.15);
+  height: var(--mark-size);
+  background-color: black;
+}
+
+.cell.x::before {
+  transform: rotate(45deg);
+}
+.cell.x::after {
+  transform: rotate(-45deg);
 }
