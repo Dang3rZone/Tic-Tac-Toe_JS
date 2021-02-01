@@ -34,18 +34,22 @@ function handleClick(e) {
   const currentClass = circleTurn ? circleClass : xClass;
   placeMark(cell, currentClass);
   if (checkWin(currentClass)) {
-    // console.log('winner winner chicken dinner');
     endGame(false);
+    //CHEACK FOR DRAW
+  } else if (isDraw()) {
+    endGame(true);
+  } else {
+    swapTurns();
+    setBoardHoverClass();
   }
-  //placeMark
+
   //CHECK FOR WIN
-  //CHEACK FOR DRAW
+
   // SWITCH TURNS
-  swapTurns();
-  setBoardHoverClass();
 }
 function endGame(draw) {
   if (draw) {
+    winningMessageElement.innerText = 'Draw!';
   } else {
     winningMessageTextElement.innerText = `${
       circleTurn ? "O's" : "X's"
@@ -54,6 +58,15 @@ function endGame(draw) {
   winningMessageElement.classList.add('show');
 }
 
+function isDraw() {
+  return [...cellElements].every((cell) => {
+    return (
+      cell.classList.contains(xClass) || cell.classList.contains(circleClass)
+    );
+  });
+}
+
+//placeMark
 function placeMark(cell, currentClass) {
   cell.classList.add(currentClass);
 }
