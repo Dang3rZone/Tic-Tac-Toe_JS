@@ -61,6 +61,7 @@ body {
 }
 
 /* MAKING THE MARKS */
+
 .cell.x,
 .cell.circle {
   cursor: not-allowed;
@@ -68,12 +69,12 @@ body {
 
 .cell.x::before,
 .cell.x::after {
-  background-color: black;
+  background-color: tomato;
 }
 
 .cell.circle::before,
 .cell.circle::after {
-  background-color: black;
+  background-color: lightskyblue;
 }
 
 .board.x .cell:not(.x):not(.circle):hover::before,
